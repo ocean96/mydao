@@ -3,41 +3,35 @@ package com.bluemoon.demo.dao.util;
 import java.util.List;
 
 public class Criteria<T> {
-	public T where; // 条件
-	public List<Sort> sort; // order by 参数
-	public Integer offset; // 数据便宜
-	public Integer size; // 数据容量
+	private List<String> where; // 条件
+	private List<String> sort; // order by 参数
+	// private Integer offset; // 数据偏量
+	// private Integer size; // 数据容量
+	// private Boolean distinct; //标识时间
+	private List<String> select; // 查询字段
 
-	public T getWhere() {
+	public List<String> getWhere() {
 		return where;
 	}
 
-	public void setWhere(T where) {
+	public void setWhere(List<String> where) {
 		this.where = where;
 	}
 
-	public List<Sort> getSort() {
+	public List<String> getSort() {
 		return sort;
 	}
 
-	public void setSort(List<Sort> sort) {
+	public void setSort(List<String> sort) {
 		this.sort = sort;
 	}
 
-	public Integer getOffset() {
-		return offset;
+	public List<String> getSelect() {
+		return select;
 	}
 
-	public void setOffset(Integer offset) {
-		this.offset = offset;
-	}
-
-	public Integer getSize() {
-		return size;
-	}
-
-	public void setSize(Integer size) {
-		this.size = size;
+	public void setSelect(List<String> select) {
+		this.select = select;
 	}
 
 }
