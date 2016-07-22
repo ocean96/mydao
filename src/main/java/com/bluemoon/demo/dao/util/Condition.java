@@ -1,6 +1,5 @@
 package com.bluemoon.demo.dao.util;
 
-import java.util.Date;
 import java.util.List;
 
 import com.bluemoon.demo.model.User;
@@ -11,10 +10,6 @@ public class Condition<T> {
 
 	public List<String> getConditions() {
 		return conditions;
-	}
-
-	public void setConditions(List<String> conditions) {
-		this.conditions = conditions;
 	}
 
 	public Condition whereEqual(String param, String value) {
