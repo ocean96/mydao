@@ -1,43 +1,31 @@
 package com.bluemoon.demo.dao.util;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import com.bluemoon.demo.model.User;
+public class Condition {
 
-public class Condition<T> {
+	private String command;
+	private String value;
 
-	private List<String> conditions; // 参数
-
-	public List<String> getConditions() {
-		return conditions;
+	public String getCommand() {
+		return command;
 	}
 
-	public Condition whereEqual(String param, String value) {
-		String where = param + "=" + value;
-		conditions.add(where);
-		return this;
+	public void setCommand(String command) {
+		this.command = command;
 	}
-	
-	public Condition whereGreater(String param, String value) {
-		String where = param + "&gt;" + value;
-		conditions.add(where);
-		return this;
+
+	public String getValue() {
+		return value;
 	}
-	
-	public Condition whereLess(String param, String value) {
-		String where = param + "&lt;" + value;
-		conditions.add(where);
-		return this;
+
+	public void setValue(String value) {
+		this.value = value;
 	}
-	
-	public Condition whereBetween(String param, String value1, String value2) {
-		String where = param + "BETWEEN" + value1 + "AND" + value2;
-		conditions.add(where);
-		return this;
-	}
-	
-	public static void main(String[] args) {
-		Condition<User> user = new Condition<User>();
-		
-	}
+
+	// public void setConditions(List<String> conditions) {
+	// this.conditions = conditions;
+	// }
+
 }

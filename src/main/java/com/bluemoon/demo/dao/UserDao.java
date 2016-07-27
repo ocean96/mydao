@@ -7,8 +7,18 @@ import org.apache.ibatis.annotations.Param;
 import com.bluemoon.demo.dao.util.Criteria;
 import com.bluemoon.demo.model.User;
 
-public interface UserDao {
+public interface UserDao<T> extends SuperDao<T> {
 	
-	List<User> findList(@Param("criteria")Criteria<User> criteria);
+	@Override
+	List<User> selectList(@Param("criteria")Criteria<T> criteria);
+	
+	@Override
+	User select(@Param("criteria")Criteria<T> criteria);
+	
+	@Override
+	Integer count(@Param("criteria")Criteria<T> criteria);
+	
+//	@Override
+//	List<>
 	
 }

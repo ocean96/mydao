@@ -12,35 +12,71 @@
 		<result column="user_mac" property="userMac" jdbcType="VARCHAR" />
 	</resultMap>
 
-	<select id="findList" parameterType="com.bluemoon.demo.dao.util.Criteria"
+	<select id="selectList" parameterType="com.bluemoon.demo.dao.util.Criteria"
 		resultMap="UserMap">
-		SELECT * FROM t_user
-		<where>
-			<if test="criteria.where.userId != null">
-				user_id = #{criteria.where.userId}
-			</if>
-			<if test="criteria.where.userName != null">
-				and user_name = #{criteria.where.userName}
-			</if>
-			<if test="criteria.where.userPassword != null">
-				and user_password = #{criteria.where.userPassword}
-			</if>
-			<if test="criteria.where.roleId != null">
-				and role_id = #{criteria.where.roleId}
-			</if>
-			<if test="criteria.where.userLoginTime != null">
-				and user_login_time = #{criteria.where.userLoginTime}
-			</if>
-			<if test="criteria.where.userMac != null">
-				and user_mac = #{criteria.where.user_mac}
-			</if>
-		</where>
-		<if test="criteria.sort != null">
+		SELECT 
+		<if test="criteria.distinct">
+			DISTINCT
+		</if>
+		* FROM t_user
+		<if test="criteria.conditionList != null">
+			<where>
+				<foreach collection="criteria.conditionList" item="condition">
+					<if test="condition.command != null">
+						AND ${condition.command} #{condition.value}
+					</if>
+				</foreach>
+			</where>
+		</if>
+		<if test="criteria.groupByList != null">
+			GROUP BY
+			<foreach collection="criteria.groupByList" item="groupBy">
+				#{groupBy}
+			</foreach>
+		</if>
+		<if test="criteria.sortList != null">
 			<trim prefix="ORDER BY" suffixOverrides=",">
-				<foreach collection="criteria.sort" item="sort" index="index">
-					#{sort.name} DESC,
+				<foreach collection="criteria.sortList" item="sort" index="index">
+					#{sort.name} #{sort.type},
 				</foreach>
 			</trim>
 		</if>
+		<if test="criteria.top != null">
+			LIMIT #{criteria.top}
+		</if>
 	</select>
+	
+	<select id="select" parameterType="com.bluemoon.demo.dao.util.Criteria" resultMap="UserMap">
+		SELECT 
+		* FROM t_user
+		<if test="criteria.conditionList != null">
+			<where>
+				<foreach collection="criteria.conditionList" item="condition">
+					<if test="condition.command != null">
+						AND ${condition.command} #{condition.value}
+					</if>
+				</foreach>
+			</where>
+		</if>
+			LIMIT 1
+	</select>
+	
+	<select id="count" parameterType="com.bluemoon.demo.dao.util.Criteria" resultMap="java.lang.Integer">
+		SELECT count(*) FROM t_user
+				<if test="criteria.conditionList != null">
+			<where>
+				<foreach collection="criteria.conditionList" item="condition">
+					<if test="condition.command != null">
+						AND ${condition.command} #{condition.value}
+					</if>
+				</foreach>
+			</where>
+		</if>
+	</select>
+	
+	<insert id="insert" parameterType="com.bluemoon.demo.model.User">
+		INSERT INTO t_user 
+		<
+	</insert>
+	
 </mapper>

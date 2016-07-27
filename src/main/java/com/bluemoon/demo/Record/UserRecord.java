@@ -1,36 +1,49 @@
 package com.bluemoon.demo.Record;
 
+import java.util.Date;
+
 import com.bluemoon.demo.dao.util.TableField;
 
 public class UserRecord {
-	
-	private final static UserRecord USER = new UserRecord();
-	
-	private final static TableField<Long> ID = new TableField<Long>("author", "id");
-	
-	private final static TableField<String> FIRST_NAME = new TableField<String>("author", "first_name");
-	
-	private final static TableField<String> LAST_NAME = new TableField<String>("author", "last_name");
-	
-	
-	public static TableField<Long> getId() {
-		return ID;
+
+	public static final UserRecord USER = new UserRecord();
+
+	public final TableField<String> USER_ID = new TableField<String>("t_user", "user_id");
+
+	public final TableField<String> USER_NAME = new TableField<String>("t_user", "user_name");
+
+	public final TableField<String> USER_PASSWORD = new TableField<String>("t_user", "user_password");
+	public final TableField<String> ROLE_ID = new TableField<String>("t_user", "role_id");
+	public final TableField<Date> USER_LOGIN_TIME = new TableField<Date>("t_user", "user_login_time");
+	public final TableField<String> USER_MAC = new TableField<String>("t_user", "user_mac");
+
+	public static UserRecord getUser() {
+		return USER;
+	}
+
+	public TableField<String> getUSER_ID() {
+		return USER_ID;
+	}
+
+	public TableField<String> getUSER_NAME() {
+		return USER_NAME;
+	}
+
+	public TableField<String> getUSER_PASSWORD() {
+		return USER_PASSWORD;
+	}
+
+	public TableField<String> getROLE_ID() {
+		return ROLE_ID;
 	}
 
 
-
-	public static TableField<String> getFirstName() {
-		return FIRST_NAME;
+	public TableField<Date> getUSER_LOGIN_TIME() {
+		return USER_LOGIN_TIME;
 	}
 
-
-
-	public static TableField<String> getLastName() {
-		return LAST_NAME;
+	public TableField<String> getUSER_MAC() {
+		return USER_MAC;
 	}
 
-	public static void main(String[] args) {
-		 System.out.println(USER.LAST_NAME);
-	}
-	
 }

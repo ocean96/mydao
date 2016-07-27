@@ -1,11 +1,13 @@
 package com.bluemoon.demo.model;
 
+import java.util.Date;
+
 public class User {
 	private String userId;
 	private String userName;
 	private String userPassword;
 	private String roleId;
-	private String userLoginTime;
+	private Date userLoginTime;
 	private String userMac;
 
 	public String getUserId() {
@@ -40,11 +42,11 @@ public class User {
 		this.roleId = roleId;
 	}
 
-	public String getUserLoginTime() {
+	public Date getUserLoginTime() {
 		return userLoginTime;
 	}
 
-	public void setUserLoginTime(String userLoginTime) {
+	public void setUserLoginTime(Date userLoginTime) {
 		this.userLoginTime = userLoginTime;
 	}
 

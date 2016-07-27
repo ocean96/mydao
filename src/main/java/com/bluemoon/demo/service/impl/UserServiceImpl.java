@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.ContextLoader;
+import org.springframework.web.context.WebApplicationContext;
 
 import com.bluemoon.demo.dao.UserDao;
 import com.bluemoon.demo.dao.util.Criteria;
@@ -26,7 +28,9 @@ public class UserServiceImpl implements UserService {
 	 * @return
 	 */
 	public User getUser(Criteria<User> criteria) {
-		List<User> user = userDao.findList(criteria);
+		WebApplicationContext wac = ContextLoader.getCurrentWebApplicationContext();
+		UserDao userMapper = (UserDao)wac.getBean("userDao");
+		List<User> user = userMapper.findList(criteria);
 		return user.get(0);
 	}
 	
