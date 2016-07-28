@@ -14,7 +14,7 @@
 
 	<select id="selectList" parameterType="com.bluemoon.demo.dao.util.Criteria"
 		resultMap="UserMap">
-		SELECT 
+		SELECT
 		<if test="criteria.distinct">
 			DISTINCT
 		</if>
@@ -45,9 +45,10 @@
 			LIMIT #{criteria.top}
 		</if>
 	</select>
-	
-	<select id="select" parameterType="com.bluemoon.demo.dao.util.Criteria" resultMap="UserMap">
-		SELECT 
+
+	<select id="select" parameterType="com.bluemoon.demo.dao.util.Criteria"
+		resultMap="UserMap">
+		SELECT
 		* FROM t_user
 		<if test="criteria.conditionList != null">
 			<where>
@@ -58,12 +59,13 @@
 				</foreach>
 			</where>
 		</if>
-			LIMIT 1
+		LIMIT 1
 	</select>
-	
-	<select id="count" parameterType="com.bluemoon.demo.dao.util.Criteria" resultMap="java.lang.Integer">
+
+	<select id="count" parameterType="com.bluemoon.demo.dao.util.Criteria"
+		resultType="java.lang.Integer">
 		SELECT count(*) FROM t_user
-				<if test="criteria.conditionList != null">
+		<if test="criteria.conditionList != null">
 			<where>
 				<foreach collection="criteria.conditionList" item="condition">
 					<if test="condition.command != null">
@@ -73,10 +75,50 @@
 			</where>
 		</if>
 	</select>
-	
-	<insert id="insert" parameterType="com.bluemoon.demo.model.User">
-		INSERT INTO t_user 
-		<
+
+	<insert id="insert" parameterType="com.bluemoon.demo.dao.util.Criteria">
+		INSERT INTO t_user
+		<if test="criteria.rowList != null">
+			<foreach open="(" collection="criteria.rowList" item="row"
+				close=")" separator=",">
+				${row}
+			</foreach>
+		</if>
+		VALUES
+		<if test="criteria.valueList != null">
+			<foreach collection="criteria.valueList" item="value" open="("
+				close=")" separator=",">
+				#{value}
+			</foreach>
+		</if>
 	</insert>
+
+	<update id="update" parameterType="com.bluemoon.demo.dao.util.Criteria">
+		UPDATE t_user SET
+		<foreach collection="criteria.setList" item="set" separator=",">
+			${set.param} = #{set.value}
+		</foreach>
+		<if test="criteria.conditionList != null">
+			<where>
+				<foreach collection="criteria.conditionList" item="condition">
+					<if test="condition.command != null">
+						AND ${condition.command} #{condition.value}
+					</if>
+				</foreach>
+			</where>
+		</if>
+	</update>
 	
+	<delete id="delete" parameterType="com.bluemoon.demo.dao.util.Criteria">
+		DELETE FROM t_user
+		<if test="criteria.conditionList != null">
+			<where>
+				<foreach collection="criteria.conditionList" item="condition">
+					<if test="condition.command != null">
+						AND ${condition.command} #{condition.value}
+					</if>
+				</foreach>
+			</where>
+		</if>
+	</delete>
 </mapper>

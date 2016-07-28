@@ -18,7 +18,13 @@ public interface UserDao<T> extends SuperDao<T> {
 	@Override
 	Integer count(@Param("criteria")Criteria<T> criteria);
 	
-//	@Override
-//	List<>
+	@Override
+	Integer insert(@Param("criteria")Criteria<T> criteria);
+	
+	@Override
+	Integer update(@Param("criteria")Criteria<T> criteria);
+	
+	@Override
+	Integer delete(@Param("criteria")Criteria<T> criteria);
 	
 }

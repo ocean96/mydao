@@ -5,6 +5,8 @@ import java.util.Date;
 import com.bluemoon.demo.dao.util.TableField;
 
 public class UserRecord {
+	
+	private UserRecord(){}
 
 	public static final UserRecord USER = new UserRecord();
 

@@ -12,6 +12,42 @@ public class Criteria<T> {
 	private List<String> select; // 查询字段
 	private Integer top; // 限制返回数目
 	private List<String> groupByList; // 分组
+	private List<String> rowList;	//列
+	private List<String> valueList;	//元素
+	private List<Set> setList;
+
+	public void addSet(Set set) {
+		if(setList == null) {
+			setList = new ArrayList<Set>();
+		}
+		setList.add(set);
+	}
+	
+	public List<Set> getSetList() {
+		return setList;
+	}
+
+	public void addRow(String row) {
+		if(rowList == null) {
+			rowList = new ArrayList<String>();
+		}
+		rowList.add(row);
+	}
+	
+	public List<String> getRowList() {
+		return rowList;
+	}
+
+	public void addValue(String value) {
+		if(valueList == null) {
+			valueList = new ArrayList<String>();
+		}
+		valueList.add(value);
+	}
+	
+	public List<String> getValueList() {
+		return valueList;
+	}
 
 	public Integer getOffset() {
 		return offset;

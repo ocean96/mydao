@@ -14,5 +14,9 @@ public interface SuperDao<T> {
 	
 	Integer count(@Param("criteria")Criteria<T> criteria);
 	
-	Integer insert(@Param("model")T model);
+	Integer insert(@Param("criteria")Criteria<T> criteria);
+	
+	Integer update(@Param("criteria")Criteria<T> criteria);
+	
+	Integer delete(@Param("criteria")Criteria<T> criteria);
 }
