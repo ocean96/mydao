@@ -2,7 +2,7 @@ package com.bluemoon.demo.Record;
 
 import java.util.Date;
 
-import com.bluemoon.demo.dao.util.TableField;
+import com.bluemoon.demo.util.TableField;
 
 public class UserRecord {
 	

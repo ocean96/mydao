@@ -4,8 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.bluemoon.demo.dao.util.Criteria;
+import com.bluemoon.demo.SuperDao;
 import com.bluemoon.demo.model.User;
+import com.bluemoon.demo.util.Criteria;
 
 public interface UserDao<T> extends SuperDao<T> {
 	

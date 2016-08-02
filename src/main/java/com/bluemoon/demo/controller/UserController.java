@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bluemoon.demo.dao.Delete;
-import com.bluemoon.demo.dao.Insert;
-import com.bluemoon.demo.dao.SQLFactory;
-import com.bluemoon.demo.dao.Select;
-import com.bluemoon.demo.dao.Update;
+import com.bluemoon.demo.Delete;
+import com.bluemoon.demo.Insert;
+import com.bluemoon.demo.SQLFactory;
+import com.bluemoon.demo.Select;
+import com.bluemoon.demo.Update;
 import com.bluemoon.demo.model.User;
 
 @Controller
