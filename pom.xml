@@ -45,7 +45,7 @@
 		<mybatis.version>3.2.8</mybatis.version>
 		<slf4j.version>1.7.7</slf4j.version>
 		<log4j.version>1.2.17</log4j.version>
-		<junit.version>4.11</junit.version>
+		<junit.version>4.13.1</junit.version>
 	</properties>
 
 	<!-- 设定插件仓库 如有Nexus私服, 取消注释并指向正确的服务器地址. -->
